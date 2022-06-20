@@ -53,7 +53,7 @@ dic['Logo'] = logo_list
 
 
 # create a dataframe from dictionary
-df_scrape = pd.DataFrame(dic)
+df_scrape = df
 df_scrape.Symbol = df_scrape.Symbol
 df_scrape.Name = df_scrape.Name
 df_scrape.Logo = df_scrape.Logo
