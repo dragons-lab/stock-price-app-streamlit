@@ -24,22 +24,33 @@ dic = {}
 url = 'https://finance.yahoo.com/cryptocurrencies?offset=0&count=100'
 soup = BeautifulSoup(requests.get(url).text)
 
+
+# Read Data
+
+df = pd.read_excel('stock_info.xlsx', header=0)
+
 # store values in separate lists and then in a dictionary
 
-symbol_list = ['AAPL', 'AMZN', 'FB', 'GOOG', 'NFLX']
-name_list = ['Apple', 'Amazon', 'Facebook', 'Alphabet', 'Netflix']
+symbol_list = list(df['symbol'])
+name_list = list(df['name'])
+logo_list = list(df['logo'])
+
+#symbol_list = ['AAPL', 'AMZN', 'FB', 'GOOG', 'NFLX']
+# name_list = ['Apple', 'Amazon', 'Facebook', 'Alphabet', 'Netflix']
 
 
 dic['Symbol'] = symbol_list
 
 dic['Name'] = name_list
+dic['Logo'] = logo_list
 
 
 # create a dataframe from dictionary
 df_scrape = pd.DataFrame(dic)
 df_scrape.Symbol = df_scrape.Symbol
 df_scrape.Name = df_scrape.Name
-dic1 = dict(zip(df_scrape.Symbol, df_scrape.Name))
+df_scrape.Logo = df_scrape.Logo
+dic1 = dict(zip(df_scrape.Symbol, df_scrape.Name, df_scrape.Logo))
 
 
 # -------------------
@@ -104,7 +115,7 @@ st.markdown('***')
 col1, col2 = st.columns([1, 10])
 with col1:
     try:
-        st.image(f'logos/{select_token}.png', width=70)
+        st.image(f'{df_scrape.Logo}', width=70)
     except:
         pass
 with col2:
