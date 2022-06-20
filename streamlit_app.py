@@ -21,13 +21,13 @@ st.set_page_config(layout="wide")
 # Web scraping Yahoo Finance
 # -------------------
 dic = {}
-url = 'https://finance.yahoo.com/cryptocurrencies?offset=0&count=100'
-soup = BeautifulSoup(requests.get(url).text)
+urls = 'https://github.com/dragons-lab/stock-price-app-streamlit/raw/main/stock_info.xlsx'
+#soup = BeautifulSoup(requests.get(url).text)
 
 
 # Read Data
 
-df = pd.read_excel('stock_info.xlsx', header=0)
+df = pd.read_excel('urls', header=0)
 
 # store values in separate lists and then in a dictionary
 
