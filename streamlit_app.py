@@ -21,13 +21,20 @@ st.set_page_config(layout="wide")
 # Web scraping Yahoo Finance
 # -------------------
 dic = {}
-urls = 'https://github.com/dragons-lab/stock-price-app-streamlit/raw/main/stock_info.xlsx'
+urls = 'https://github.com/dragons-lab/stock-price-app-streamlit/raw/main/stock_info.csv'
 #soup = BeautifulSoup(requests.get(url).text)
+
+# read csv from a URL
+
+
+
+def get_data() -> pd.DataFrame:
+    return pd.read_csv(urls)
 
 
 # Read Data
-
-df = pd.read_excel('urls', header=0)
+df = get_data()
+# df = pd.read_excel('urls', header=0)
 
 # store values in separate lists and then in a dictionary
 
