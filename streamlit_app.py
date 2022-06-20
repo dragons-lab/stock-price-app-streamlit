@@ -1,6 +1,6 @@
-#-------------------
+# -------------------
 # Imports
-#-------------------
+# -------------------
 import streamlit as st
 import yfinance as yf
 import pandas as pd
@@ -14,13 +14,12 @@ from datetime import datetime
 
 # today's date
 today = datetime.today().strftime('%d %B %Y')
-
 st.set_page_config(layout="wide")
 
 
-#-------------------
+# -------------------
 # Web scraping Yahoo Finance
-#-------------------
+# -------------------
 dic = {}
 url = 'https://finance.yahoo.com/cryptocurrencies?offset=0&count=100'
 soup = BeautifulSoup(requests.get(url).text)
@@ -29,7 +28,7 @@ soup = BeautifulSoup(requests.get(url).text)
 
 symbol_list = ['AAPL', 'AMZN', 'FB', 'GOOG', 'NFLX']
 name_list = ['Apple', 'Amazon', 'Facebook', 'Alphabet', 'Netflix']
-  
+
 
 dic['Symbol'] = symbol_list
 
@@ -43,9 +42,9 @@ df_scrape.Name = df_scrape.Name
 dic1 = dict(zip(df_scrape.Symbol, df_scrape.Name))
 
 
-#-------------------
+# -------------------
 # Streamlit Sidebar
-#-------------------
+# -------------------
 #fiat = ['USD', 'EUR', 'GBP']
 tokens = df_scrape.Symbol.values
 
@@ -86,9 +85,9 @@ with col4:
     st.markdown(link, unsafe_allow_html=True)
 
 
-#-------------------
+# -------------------
 # Title Image
-#-------------------
+# -------------------
 col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
@@ -99,9 +98,9 @@ with col3:
 
 st.markdown('***')
 
-#-------------------
+# -------------------
 # Add crypto logo and name
-#-------------------
+# -------------------
 col1, col2 = st.columns([1, 10])
 with col1:
     try:
@@ -112,9 +111,9 @@ with col2:
     st.markdown(f'''## {dic1[select_token]}''')
 
 
-#-------------------
+# -------------------
 # Candlestick chart with moving averages
-#-------------------
+# -------------------
 st.markdown('''
 - The following is an interactive Candlestick chart for the price fluctuations over the past 5 years. 
 - Simple moving averages were computed for 20, 50 and 100 day frequencies.
@@ -146,14 +145,14 @@ fig = go.Figure(data=[go.Candlestick(x=df.index,
 fig.update_layout(go.Layout(xaxis={'showgrid': True},
                   yaxis={'showgrid': True}),
                   title=f'{dic1[select_token]} Price Fluctuation with Moving Averages',
-                  yaxis_title=f'Price USD',
+                  yaxis_title='Price USD',
                   xaxis_rangeslider_visible=False)
 
 st.plotly_chart(fig, use_container_width=True)
 
-#-------------------
+# -------------------
 # Line Chart with daily trends
-#-------------------
+# -------------------
 st.markdown('## Daily Trends')
 st.markdown(f'''
 - Line graph below shows the price fluctuation of {dic1[select_token]} every minute for today's date ({today}).
@@ -164,7 +163,7 @@ st.markdown(f'''
 
 # download daily crypto prices from Yahoo Finance
 df = yf.download(
-    tickers=f'{select_token}, period='1y', interval='1d')
+    tickers=f'{select_token}', period='3y', interval='1d')
 pio.templates.default = 'plotly_dark'
 # Plotly line chart
 fig = go.Figure()
@@ -181,4 +180,3 @@ fig.update_layout(go.Layout(xaxis={'showgrid': True},
                   yaxis_title=f'Price USD',
                   xaxis_rangeslider_visible=False)
 st.plotly_chart(fig, use_container_width=True)
-
