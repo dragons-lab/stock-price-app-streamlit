@@ -57,7 +57,7 @@ select_token = st.sidebar.selectbox('Symbol', tokens)
 st.sidebar.markdown('***')
 with st.sidebar.expander('Help'):
     st.markdown('''
-                    - Select token and fiat of your choice.
+                    - Select symbol  of your choice.
                     - Interactive plots can be zoomed or hovered to retrieve more info.
                     - Plots can be downloaded using Plotly tools.''')
 
@@ -153,17 +153,17 @@ st.plotly_chart(fig, use_container_width=True)
 # -------------------
 # Line Chart with daily trends
 # -------------------
-st.markdown('## Daily Trends')
+st.markdown('## Yearly Trends')
 st.markdown(f'''
-- Line graph below shows the price fluctuation of {dic1[select_token]} every minute for today's date ({today}).
+- Line graph below shows the price fluctuation of {dic1[select_token]} every day for today's date ({today}).
 - The data is automatically updated for the current day.
-- The horizontal line shows the current day's open price.
-- Green portion indicates the price greater than open price and red for lower.
+- The horizontal line shows the current day's start date price.
+- Green portion indicates the price greater than start date price and red for lower.
 ''')
 
 # download daily crypto prices from Yahoo Finance
 df = yf.download(
-    tickers=f'{select_token}', period='3y', interval='1d')
+    tickers=f'{select_token}', period='1y', interval='1d')
 pio.templates.default = 'plotly_dark'
 # Plotly line chart
 fig = go.Figure()
@@ -171,9 +171,9 @@ fig = go.Figure()
 
 fig.add_scattergl(x=df.index, y=df.Close,
                   line={'color': 'green'}, name='Up trend')
-fig.add_scattergl(x=df.index, y=df.Close.where(df.Close <= df.Open[0]),
+fig.add_scattergl(x=df.index, y=df.Close.where(df.Close <= df.Close[0]),
                   line={'color': 'red'}, name='Down trend')
-fig.add_hline(y=df.Open[0], line={'color': 'grey'}, name='Trend')
+fig.add_hline(y=df.Close[0], line={'color': 'grey'}, name='Trend')
 fig.update_layout(go.Layout(xaxis={'showgrid': True},
                   yaxis={'showgrid': True}),
                   title=f'{dic1[select_token]} Daily Trends in Comparison to Open Price',
