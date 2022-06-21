@@ -114,7 +114,8 @@ with col2:
     st.markdown('# Large-Cap Stocks')
 with col3:
     # st.write("")
-    st.metric(label="Price", value="70.32", "-8.23%")
+    #st.metric(label="Price", value="70.32", "-8.23%")
+    st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
 # -------------------
 # Add crypto logo and name
