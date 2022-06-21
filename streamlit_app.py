@@ -128,7 +128,7 @@ with col3:
      st.write("")
 
 
-space(2)
+
 # -------------------
 # Add crypto logo and name
 # -------------------
