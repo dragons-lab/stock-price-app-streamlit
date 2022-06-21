@@ -177,6 +177,17 @@ with col3:
 with col4:
     st.metric(label="Price", value = f'{currentPrice}', delta = f'{currentChange} - ({current_PercentChange} %)')
 
+col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
+with col1:
+    st.write("")
+with col2:
+    st.write("")
+with col3:
+    st.write("")
+with col4:
+    st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
+with col5:
+    st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
@@ -186,23 +197,13 @@ with col2:
 with col3:
     st.metric(label="Volume", value = f'{currentVolume} M')
 with col4:
-    st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh} \n')
-    st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
+    st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh}')
+    #st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
 with col5:
-    st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh} \n ')
-    st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
+    st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh} ')
+    #st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
 
-col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
-with col1:
-    st.write("")
-with col2:
-    st.write("")
-with col3:
-    st.write("")
-with col4:
-    st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
-with col5:
-    st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
+
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
