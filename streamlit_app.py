@@ -135,7 +135,7 @@ with col3:
 tickers = yf.Ticker(f'{select_token}')
 
 desc = tickers.info
-currentPrice = num_format(desc["currentPrice"])
+currentPrice = desc["currentPrice"]
 currentOpen = num_format(desc['regularMarketOpen'])
 currentLow = num_format(desc['dayLow'])
 currentHigh = num_format(desc['regularMarketDayHigh'])
@@ -146,11 +146,11 @@ PreviousClose = desc['regularMarketPreviousClose']
 currentChange = currentPrice - PreviousClose
 current_PercentChange = num_format((currentChange / PreviousClose) * 100)
 currentChange = num_format(currentChange)
-
+currentPrice = num_format(currentPrice)
 #----------
 dc ={}
 
-currentMarketCap = num_format(desc['marketCap']/1000000)
+currentMarketCap = desc['marketCap']/1000000
 currentEPS = num_format(desc['trailingEps'])
 currentPE = num_format(desc['trailingPE'])
 currentDivYield = num_format(desc['dividendRate'])
@@ -187,6 +187,19 @@ with col4:
     st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh}')
 with col5:
     st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh}')
+
+
+col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
+with col1:
+    st.metric(label="Market Cap", value = f'{currentMarketCap} M' )
+with col2:
+    st.metric(label="EPS", value = f'{currentEPS}')
+with col3:
+    st.metric(label="P/E", value = f'{currentPE} ')
+with col4:
+    st.metric(label="Dividend Yield", value = f'{currentDivYield}')
+with col5:
+    st.metric(label="Beta", value = f'{currentBeta}')
 
 age = st.slider('How old are you?', 0, 130, 25)
 st.write("I'm ", age, 'years old')
