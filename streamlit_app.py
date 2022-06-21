@@ -26,6 +26,13 @@ urls = 'https://github.com/dragons-lab/stock-price-app-streamlit/raw/main/stock_
 
 # read csv from a URL
 
+def num_format(number,format_num=',.2f'):
+    """
+    Formatting helper - float (1 Item)
+    """
+    if np.isnan(number):
+        return '-'
+    return format(number, format_num)
 
 
 def get_data() -> pd.DataFrame:
@@ -124,7 +131,7 @@ tickers = yf.Ticker(f'{select_token}')
 
 desc = tickers.info
 currentChange = desc["currentPrice"] - desc['regularMarketPreviousClose']
-current_PercentChange = (currentChange  / desc['regularMarketPreviousClose'] * 100)
+current_PercentChange = num_format(currentChange  / desc['regularMarketPreviousClose'] * 100)
 
 col1, col2 , col3 = st.columns([1, 4, 4])
 with col1:
