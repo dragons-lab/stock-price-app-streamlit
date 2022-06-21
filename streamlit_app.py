@@ -57,8 +57,8 @@ df_scrape = pd.DataFrame(dic)
 df_scrape.Symbol = df_scrape.Symbol
 df_scrape.Name = df_scrape.Name
 df_scrape.Logo = df_scrape.Logo
-dic1 = dict(zip(df_scrape.Symbol, df_scrape.Name, df_scrape.Logo))
-
+dic1 = dict(zip(df_scrape.Symbol, df_scrape.Name))
+dic2 = dict(zip(df_scrape.Symbol,  df_scrape.Logo))
 
 # -------------------
 # Streamlit Sidebar
@@ -111,11 +111,9 @@ with col1:
     st.write("")
 with col2:
     #st.image('title.png', width=600)
-    st.write("")
+    st.markdown('## Large-Cap Stocks')
 with col3:
     st.write("")
-
-st.markdown('# Large-Cap Stocks')
 
 # -------------------
 # Add crypto logo and name
@@ -123,7 +121,7 @@ st.markdown('# Large-Cap Stocks')
 col1, col2 = st.columns([1, 10])
 with col1:
     try:
-        st.image(f'{df_scrape.Logo}', width=70)
+        st.image(f'{dic2[select_token]}', width=70)
     except:
         pass
 with col2:
