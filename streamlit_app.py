@@ -130,6 +130,7 @@ with col3:
 tickers = yf.Ticker(f'{select_token}')
 
 desc = tickers.info
+currentPrice = desc["currentPrice"]
 currentChange = desc["currentPrice"] - desc['regularMarketPreviousClose']
 current_PercentChange = num_format(currentChange  / desc['regularMarketPreviousClose'] * 100)
 
@@ -142,7 +143,7 @@ with col1:
 with col2:
     st.markdown(f'''## {dic1[select_token]}''')
 with col3:
-    st.metric(label="Price", delta=f'{desc["currentPrice"]}', delta= f'{currentChange} {current_PercentChange} %')
+    st.metric(label="Price", delta = f'{currentPrice} {currentChange} {current_PercentChange} %')
 
 # -------------------
 # Candlestick chart with moving averages
