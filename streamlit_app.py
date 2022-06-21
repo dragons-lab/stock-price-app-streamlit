@@ -190,6 +190,17 @@ with col4:
 with col5:
     st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh}')
 
+col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
+with col1:
+    st.write("")
+with col2:
+    st.write("")
+with col3:
+    st.write("")
+with col4:
+    price = st.slider('52 Week Range', f'{fiftyTwoWeekLow}, {fiftyTwoWeekHigh},{currentPrice}')
+with col5:
+    st.write("")
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
@@ -204,17 +215,7 @@ with col5:
     st.metric(label="Beta", value = f'{currentBeta}')
 
 
-col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
-with col1:
-    st.write("")
-with col2:
-    st.write("")
-with col3:
-    st.write("")
-with col4:
-    price = st.slider('52 Week Range', f'{fiftyTwoWeekLow}', f'{fiftyTwoWeekHigh}',f'{currentPrice}')
-with col5:
-    st.write("")
+
 
 # -------------------
 # Plotly Table
