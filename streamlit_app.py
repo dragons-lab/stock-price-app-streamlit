@@ -53,7 +53,7 @@ dic['Logo'] = logo_list
 
 
 # create a dataframe from dictionary
-df_scrape = df
+df_scrape = pd.DataFrame(dic)
 df_scrape.Symbol = df_scrape.Symbol
 df_scrape.Name = df_scrape.Name
 df_scrape.Logo = df_scrape.Logo
@@ -110,11 +110,12 @@ col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
 with col2:
-    st.image('title.png', width=600)
+    #st.image('title.png', width=600)
+    st.write("")
 with col3:
     st.write("")
 
-st.markdown('***')
+st.markdown('# Large-Cap Stocks')
 
 # -------------------
 # Add crypto logo and name
@@ -193,7 +194,7 @@ fig.add_scattergl(x=df.index, y=df.Close.where(df.Close <= df.Close[0]),
                   line={'color': 'red'}, name='Down trend')
 fig.add_hline(y=df.Close[0], line={'color': 'grey'}, name='Trend')
 fig.update_layout(go.Layout(xaxis={'showgrid': True},
-                  yaxis={'showgrid': True}),
+                  yaxis={'showgrid': False}),
                   title=f'{dic1[select_token]} Daily Trends in Comparison to Open Price',
                   yaxis_title=f'Price USD',
                   xaxis_rangeslider_visible=False)
