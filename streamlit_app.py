@@ -110,8 +110,8 @@ col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
 with col2:
-    st.image('title.png', width=600)
-    #st.markdown('## Large-Cap Stocks')
+    #st.image('title.png', width=600)
+    st.markdown('## Large-Cap Stocks')
 with col3:
     st.write("")
 
@@ -191,7 +191,7 @@ fig.add_scattergl(x=df.index, y=df.Close,
 fig.add_scattergl(x=df.index, y=df.Close.where(df.Close <= df.Close[0]),
                   line={'color': 'red'}, name='Down trend')
 fig.add_hline(y=df.Close[0], line={'color': 'grey'}, name='Trend')
-fig.update_layout(go.Layout(xaxis={'showgrid': True},
+fig.update_layout(go.Layout(xaxis={'showgrid': False},
                   yaxis={'showgrid': False}),
                   title=f'{dic1[select_token]} Daily Trends in Comparison to Open Price',
                   yaxis_title=f'Price USD',
