@@ -26,6 +26,11 @@ urls = 'https://github.com/dragons-lab/stock-price-app-streamlit/raw/main/stock_
 
 # read csv from a URL
 
+def space(num_lines=1):
+    """Adds empty lines to the Streamlit app."""
+    for _ in range(num_lines):
+        st.write("")
+
 def num_format(number,format_num=',.2f'):
     """
     Formatting helper - float (1 Item)
@@ -137,11 +142,11 @@ currentHigh = num_format(desc['regularMarketDayHigh'])
 fiftyTwoWeekLow = num_format(desc['fiftyTwoWeekLow'])
 fiftyTwoWeekHigh = num_format(desc['fiftyTwoWeekHigh'])
 PreviousClose = desc['regularMarketPreviousClose']
-currentChange = currentPrice - PreviousClose
+currentChange = num_format(currentPrice - PreviousClose)
 current_PercentChange = num_format((currentChange  / PreviousClose) * 100)
 
 
-col1, col2 , col3 = st.columns([1, 4, 4])
+col1, col2 , col3, col4 = st.columns([1, 4, 3, 2])
 with col1:
     try:
         st.image(f'{dic2[select_token]}', width=70)
@@ -150,7 +155,9 @@ with col1:
 with col2:
     st.markdown(f'''## {dic1[select_token]}''')
 with col3:
-    st.metric(label="Price", value = f'{currentPrice}', delta = f'{currentChange} - {current_PercentChange} %')
+    st.write("")
+with col4:
+    st.metric(label="Price", value = f'{currentPrice}', delta = f'{currentChange} - ({current_PercentChange} %)')
 
 
 col1, col2 , col3, col4 = st.columns([3, 3, 3, 3])
