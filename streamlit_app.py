@@ -198,7 +198,7 @@ with col2:
 with col3:
     st.write("")
 with col4:
-    price = st.slider('52 Week Range', fiftyTwoWeekLow, fiftyTwoWeekHigh,currentPrice)
+    price = st.slider('52 Week Range', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
 with col5:
     st.write("")
 
