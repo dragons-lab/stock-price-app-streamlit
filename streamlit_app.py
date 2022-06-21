@@ -198,7 +198,7 @@ cols_to_show = ['Market Cap', 'EPS', 'P/E', 'Dividend Yield', 'Beta']
 
 datas=[go.Table(columnwidth=[20,15,15,15,15],
                 header=dict(values=[f"<b>{col}</b>" for col in lst],
-                font=dict( size=25),
+                font=dict( size=30),
                 height=30,
                 line_color='white',
                 fill_color='white',
