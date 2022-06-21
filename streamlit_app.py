@@ -139,7 +139,7 @@ currentPrice = desc["currentPrice"]
 currentOpen = num_format(desc['regularMarketOpen'])
 currentLow = num_format(desc['dayLow'])
 currentHigh = num_format(desc['regularMarketDayHigh'])
-currentVolume = num_format(desc['volume'])
+currentVolume = num_format(desc['volume']/1000000)
 fiftyTwoWeekLow = num_format(desc['fiftyTwoWeekLow'])
 fiftyTwoWeekHigh = num_format(desc['fiftyTwoWeekHigh'])
 PreviousClose = desc['regularMarketPreviousClose']
@@ -169,7 +169,7 @@ with col1:
 with col2:
     st.metric(label="Open", value = f'{currentOpen}')
 with col3:
-    st.metric(label="Volume", value = f'{currentVolume}')
+    st.metric(label="Volume", value = f'{currentVolume} M')
 with col4:
     st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh}')
 with col5:
