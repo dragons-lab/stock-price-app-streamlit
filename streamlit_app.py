@@ -200,14 +200,14 @@ datas=[go.Table(columnwidth=[20,15,15,15,15],
                 header=dict(values=[f"<b>{col}</b>" for col in lst],
                 font=dict( size=25),
                 height=30,
-               # line_color='white',
+                line_color='white',
                 fill_color='white',
-                align=['left', 'left', 'right', 'right', 'right']),
+                align=['center','center', 'center','center','center']),
                 cells=dict(values=cols_to_show,
                fill_color='white',
                font=dict(color='grey', size=15),
                height=30,
-            #   line_color='white',
+              line_color='white',
                align=['center','center', 'center','center','center']))]
 
 fig = go.Figure(data=datas)
