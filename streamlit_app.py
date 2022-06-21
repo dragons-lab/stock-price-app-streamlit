@@ -143,7 +143,7 @@ fiftyTwoWeekLow = num_format(desc['fiftyTwoWeekLow'])
 fiftyTwoWeekHigh = num_format(desc['fiftyTwoWeekHigh'])
 PreviousClose = desc['regularMarketPreviousClose']
 currentChange = num_format(currentPrice - PreviousClose)
-current_PercentChange = num_format((currentChange  / PreviousClose) * 100)
+current_PercentChange = num_format((currentChange / PreviousClose) * 100)
 
 
 col1, col2 , col3, col4 = st.columns([1, 4, 3, 2])
