@@ -146,18 +146,18 @@ with col1:
 with col2:
     st.markdown(f'''## {dic1[select_token]}''')
 with col3:
-    st.metric(label="Price", value=  f'{currentPrice}', delta = f'{currentChange} - {current_PercentChange} %')
+    st.metric(label="Price", value = f'{currentPrice}', delta = f'{currentChange} - {current_PercentChange} %')
 
 
 col1, col2 , col3, col4 = st.columns([3, 3, 3, 3])
 with col1:
-    st.metric(label="Previous Close", delta = f'{PreviousClose}' )
+    st.metric(label="Previous Close", value = f'{PreviousClose}' )
 with col2:
     st.markdown(f'''## {currentOpen} \n Open ''')
 with col3:
-    st.metric(label="Previous Close", delta = f'{PreviousClose}')
+    st.metric(label="Previous Close", value = f'{PreviousClose}')
 with col4:
-    st.metric(label="Previous Close", delta = f'{PreviousClose}')
+    st.metric(label="Previous Close", value = f'{PreviousClose}')
 
 
 
