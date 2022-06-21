@@ -155,7 +155,7 @@ with col3:
 
 col1, col2 , col3, col4 = st.columns([3, 3, 3, 3])
 with col1:
-    st.metric(label="Previous Close", value = f'{PreviousClose} )
+    st.metric(label="Previous Close", value = f'{PreviousClose}' )
 with col2:
     st.metric(label="Open", value = f'{currentOpen}')
 with col3:
