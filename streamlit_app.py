@@ -153,14 +153,14 @@ dc ={}
 currentMarketCap = desc['marketCap']/1000000000000
 currentEPS = num_format(desc['trailingEps'])
 currentPE = num_format(desc['trailingPE'])
-currentDivYield = num_format(desc['dividendRate'])
+currentDivYield = desc['dividendRate']
 currentBeta = num_format(desc['beta'])
 
 currentMarketCap = num_format(currentMarketCap)
 
 # dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
-lst = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
+
 
 
 
@@ -204,6 +204,7 @@ with col5:
     #st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
 
 
+currentDivYield = num_format(currentDivYield)
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
