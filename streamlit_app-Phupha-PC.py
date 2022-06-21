@@ -26,18 +26,6 @@ urls = 'https://github.com/dragons-lab/stock-price-app-streamlit/raw/main/stock_
 
 # read csv from a URL
 
-def space(num_lines=1):
-    """Adds empty lines to the Streamlit app."""
-    for _ in range(num_lines):
-        st.write("")
-
-def num_format(number,format_num=',.2f'):
-    """
-    Formatting helper - float (1 Item)
-    """
-    if np.isnan(number):
-        return '-'
-    return format(number, format_num)
 
 
 def get_data() -> pd.DataFrame:
@@ -70,7 +58,8 @@ df_scrape.Symbol = df_scrape.Symbol
 df_scrape.Name = df_scrape.Name
 df_scrape.Logo = df_scrape.Logo
 dic1 = dict(zip(df_scrape.Symbol, df_scrape.Name))
-dic2 = dict(zip(df_scrape.Symbol,  df_scrape.Logo))
+dic2 = dict(zip(df_scrape.Symbol, df_scrape.Logo))
+
 
 # -------------------
 # Streamlit Sidebar
@@ -118,51 +107,20 @@ with col4:
 # -------------------
 # Title Image
 # -------------------
-col1, col2, col3 = st.columns([3, 5, 3])
+col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
 with col2:
-    #st.image('title.png', width=600)
-    st.markdown('# Large-Cap Stocks')
+    st.image('title.png', width=600)
 with col3:
-     st.write("")
+    st.write("")
 
-
+st.markdown('***')
 
 # -------------------
 # Add crypto logo and name
 # -------------------
-tickers = yf.Ticker(f'{select_token}')
-
-desc = tickers.info
-currentPrice = num_format(desc["currentPrice"])
-currentOpen = num_format(desc['regularMarketOpen'])
-currentLow = num_format(desc['dayLow'])
-currentHigh = num_format(desc['regularMarketDayHigh'])
-currentVolume = num_format(desc['volume']/1000000)
-fiftyTwoWeekLow = num_format(desc['fiftyTwoWeekLow'])
-fiftyTwoWeekHigh = num_format(desc['fiftyTwoWeekHigh'])
-PreviousClose = desc['regularMarketPreviousClose']
-currentChange = currentPrice - PreviousClose
-current_PercentChange = num_format((currentChange / PreviousClose) * 100)
-currentChange = num_format(currentChange)
-
-#----------
-dc ={}
-
-currentMarketCap = num_format(desc['marketCap']/1000000)
-currentEPS = num_format(desc['trailingEps'])
-currentPE = num_format(desc['trailingPE'])
-currentDivYield = num_format(desc['dividendRate'])
-currentBeta = num_format(desc['beta'])
-
-# dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
-
-lst = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
-
-
-
-col1, col2 , col3, col4 = st.columns([1, 4, 3, 2])
+col1, col2 = st.columns([1, 10])
 with col1:
     try:
         st.image(f'{dic2[select_token]}', width=70)
@@ -170,58 +128,7 @@ with col1:
         pass
 with col2:
     st.markdown(f'''## {dic1[select_token]}''')
-with col3:
-    st.write("")
-with col4:
-    st.metric(label="Price", value = f'{currentPrice}', delta = f'{currentChange} - ({current_PercentChange} %)')
 
-
-col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
-with col1:
-    st.metric(label="Previous Close", value = f'{PreviousClose}' )
-with col2:
-    st.metric(label="Open", value = f'{currentOpen}')
-with col3:
-    st.metric(label="Volume", value = f'{currentVolume} M')
-with col4:
-    st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh}')
-with col5:
-    st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh}')
-
-age = st.slider('How old are you?', 0, 130, 25)
-st.write("I'm ", age, 'years old')
-
-# -------------------
-# Plotly Table
-# -------------------
-
-cols_to_show = ['Market Cap', 'EPS', 'P/E', 'Dividend Yield', 'Beta']
-
-
-datas=[go.Table(columnwidth=[20,15,15,15,15],
-                header=dict(values=[f"<b>{col}</b>" for col in lst],
-                font=dict( size=30),
-                height=30,
-                line_color='white',
-                fill_color='white',
-                align=['center','center', 'center','center','center']),
-                cells=dict(values=cols_to_show,
-               fill_color='white',
-               font=dict(color='grey', size=15),
-               height=30,
-              line_color='white',
-               align=['center','center', 'center','center','center']))]
-
-fig = go.Figure(data=datas)
-fig.update_layout(go.Layout(xaxis = {'showgrid': False},
-                  yaxis = {'showgrid': False}))
-st.plotly_chart(fig, use_container_width=True)
-
-dataframe = pd.DataFrame({
-     'first column': [1, 2, 3, 4],
-     'second column': [10, 20, 30, 40],
- })
-st.experimental_show(dataframe)
 
 # -------------------
 # Candlestick chart with moving averages
@@ -286,8 +193,8 @@ fig.add_scattergl(x=df.index, y=df.Close,
 fig.add_scattergl(x=df.index, y=df.Close.where(df.Close <= df.Close[0]),
                   line={'color': 'red'}, name='Down trend')
 fig.add_hline(y=df.Close[0], line={'color': 'grey'}, name='Trend')
-fig.update_layout(go.Layout(xaxis={'showgrid': False},
-                  yaxis={'showgrid': False}),
+fig.update_layout(go.Layout(xaxis={'showgrid': True},
+                  yaxis={'showgrid': True}),
                   title=f'{dic1[select_token]} Daily Trends in Comparison to Open Price',
                   yaxis_title=f'Price USD',
                   xaxis_rangeslider_visible=False)
