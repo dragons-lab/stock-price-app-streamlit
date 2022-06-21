@@ -203,12 +203,12 @@ data=[go.Table(columnwidth = [20,15,15,15,15],
                 line_color='white',
                 fill_color='dimgrey',
                 align=['left','left', 'right','right','right']),
-                cells=dict(values=lst),
+                cells=dict(values=lst.values.T),
                fill_color=fill_color,
                font=dict(color='white', size=20),
                height=30,
                line_color='white',
-               align=['left','left', 'right','right','right']))]
+               align=['left','left', 'right','right','right'])]
 
 fig = go.Figure(data=data)
 fig.update_layout(go.Layout(xaxis = {'showgrid': True},
