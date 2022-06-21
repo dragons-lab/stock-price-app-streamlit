@@ -158,7 +158,7 @@ currentBeta = num_format(desc['beta'])
 
 # dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
-lst = list[currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
+lst = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
 
 
