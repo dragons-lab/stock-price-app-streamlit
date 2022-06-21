@@ -153,7 +153,7 @@ dc ={}
 currentMarketCap = desc['marketCap']/1000000000000
 currentEPS = num_format(desc['trailingEps'])
 currentPE = num_format(desc['trailingPE'])
-currentDivYield = desc['dividendRate']
+forwardEPS = desc['forwardEps']
 currentBeta = num_format(desc['beta'])
 
 currentMarketCap = num_format(currentMarketCap)
@@ -212,9 +212,9 @@ with col1:
 with col2:
     st.metric(label="EPS", value = f'{currentEPS}')
 with col3:
-    st.metric(label="P/E", value = f'{currentPE} ')
+    st.metric(label="Forward EPS", value=f'{forwardEPS}')
 with col4:
-    st.metric(label="Dividend Yield", value = f'{currentDivYield}')
+    st.metric(label="P/E", value=f'{currentPE} ')
 with col5:
     st.metric(label="Beta", value = f'{currentBeta}')
 
