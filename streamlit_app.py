@@ -118,7 +118,7 @@ with col4:
 # -------------------
 # Title Image
 # -------------------
-col1, col2, col3 = st.columns([1, 5, 3])
+col1, col2, col3 = st.columns([3, 5, 3])
 with col1:
     st.write("")
 with col2:
@@ -126,9 +126,9 @@ with col2:
     st.markdown('# Large-Cap Stocks')
 with col3:
      st.write("")
-    #st.metric(label="Price", value="70.32", "-8.23%")
 
 
+space(2)
 # -------------------
 # Add crypto logo and name
 # -------------------
@@ -144,10 +144,23 @@ fiftyTwoWeekLow = num_format(desc['fiftyTwoWeekLow'])
 fiftyTwoWeekHigh = num_format(desc['fiftyTwoWeekHigh'])
 PreviousClose = desc['regularMarketPreviousClose']
 currentChange = currentPrice - PreviousClose
-
 current_PercentChange = num_format((currentChange / PreviousClose) * 100)
-
 currentChange = num_format(currentChange)
+
+#----------
+dc ={}
+
+currentMarketCap = num_format(desc['marketCap']/1000000)
+currentEPS = num_format(desc['trailingEps'])
+currentPE = num_format(desc['trailingPE'])
+currentDivYield = num_format(desc['dividendRate'])
+currentBeta = num_format(desc['beta'])
+
+# dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
+
+lst = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
+
+
 
 col1, col2 , col3, col4 = st.columns([1, 4, 3, 2])
 with col1:
@@ -174,6 +187,33 @@ with col4:
     st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh}')
 with col5:
     st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh}')
+
+
+# -------------------
+# Plotly Table
+# -------------------
+
+cols_to_show = ['Market Cap', 'EPS', 'P/E', 'Dividend Yield', 'Beta']
+
+
+data=[go.Table(columnwidth = [20,15,15,15,15],
+                header=dict(values=[f"<b>{col}</b>" for col in cols_to_show],
+                font=dict(color='white', size=20),
+                height=30,
+                line_color='white',
+                fill_color='dimgrey',
+                align=['left','left', 'right','right','right']),
+                cells=dict(values=lst),
+               fill_color=fill_color,
+               font=dict(color='white', size=20),
+               height=30,
+               line_color='white',
+               align=['left','left', 'right','right','right']))]
+
+fig = go.Figure(data=data)
+fig.update_layout(go.Layout(xaxis = {'showgrid': True},
+                  yaxis = {'showgrid': True}))
+st.plotly_chart(fig, use_container_width=True)
 
 
 
