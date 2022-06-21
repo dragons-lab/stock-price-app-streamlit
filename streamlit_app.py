@@ -147,6 +147,7 @@ currentChange = currentPrice - PreviousClose
 
 current_PercentChange = num_format((currentChange / PreviousClose) * 100)
 
+currentChange = num_format(currentChange)
 
 col1, col2 , col3, col4 = st.columns([1, 4, 3, 2])
 with col1:
