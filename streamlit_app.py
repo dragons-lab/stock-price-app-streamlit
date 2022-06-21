@@ -196,13 +196,13 @@ with col5:
 cols_to_show = ['Market Cap', 'EPS', 'P/E', 'Dividend Yield', 'Beta']
 
 
-data=[go.Table(columnwidth = [20,15,15,15,15],
+datas=[go.Table(columnwidth = [20,15,15,15,15],
                 header=dict(values=[f"<b>{col}</b>" for col in cols_to_show],
                 font=dict(color='white', size=20),
                 height=30,
                 line_color='white',
                 fill_color='dimgrey',
-                align=['left','left', 'right','right','right']),
+                align=['left', 'left', 'right', 'right', 'right']),
                 cells=dict(values=lst),
                #fill_color=fill_color,
                font=dict(color='white', size=20),
@@ -210,7 +210,7 @@ data=[go.Table(columnwidth = [20,15,15,15,15],
                line_color='white',
                align=['left','left', 'right','right','right'])]
 
-fig = go.Figure(data=data)
+fig = go.Figure(data=datas)
 fig.update_layout(go.Layout(xaxis = {'showgrid': True},
                   yaxis = {'showgrid': True}))
 st.plotly_chart(fig, use_container_width=True)
