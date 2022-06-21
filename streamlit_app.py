@@ -148,6 +148,7 @@ current_PercentChange = num_format((currentChange / PreviousClose) * 100)
 currentChange = num_format(currentChange)
 currentPrice = num_format(currentPrice)
 currency = desc['currency']
+logo_url = desc['logo_url']
 
 #----------
 dc ={}
@@ -170,7 +171,7 @@ businessSummary = desc['longBusinessSummary']
 col1, col2 , col3, col4 = st.columns([1, 4, 3, 2])
 with col1:
     try:
-        st.image(f'{dic2[select_token]}', width=70)
+        st.image(f'{logo_url}', width=70)
     except:
         pass
 with col2:
