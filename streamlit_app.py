@@ -158,7 +158,7 @@ currentBeta = num_format(desc['beta'])
 
 # dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
-lst = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
+lst = list[currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
 
 
@@ -203,7 +203,7 @@ datas=[go.Table(columnwidth = [20,15,15,15,15],
                 line_color='white',
                 fill_color='dimgrey',
                 align=['left', 'left', 'right', 'right', 'right']),
-                cells=dict(values= [f'{vals}' for vals in lst]),
+                cells=dict(values=[f'{vals}' for vals in lst]),
                #fill_color=fill_color,
                font=dict(color='white', size=20),
                height=30,
