@@ -185,9 +185,15 @@ with col1:
     st.write("")
 
 with col2:
-    st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
+    try:
+        st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
+    except:
+        pass
 with col3:
-    st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
+    try:
+        st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
+    except:
+        pass
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
