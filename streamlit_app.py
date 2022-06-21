@@ -188,6 +188,8 @@ with col4:
 with col5:
     st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh}')
 
+age = st.slider('How old are you?', 0, 130, 25)
+st.write("I'm ", age, 'years old')
 
 # -------------------
 # Plotly Table
@@ -215,7 +217,11 @@ fig.update_layout(go.Layout(xaxis = {'showgrid': False},
                   yaxis = {'showgrid': False}))
 st.plotly_chart(fig, use_container_width=True)
 
-
+dataframe = pd.DataFrame({
+     'first column': [1, 2, 3, 4],
+     'second column': [10, 20, 30, 40],
+ })
+st.experimental_show(dataframe)
 
 # -------------------
 # Candlestick chart with moving averages
