@@ -106,7 +106,7 @@ with col4:
 # -------------------
 # Title Image
 # -------------------
-col1, col2, col3 = st.columns([1, 6, 3])
+col1, col2, col3 = st.columns([1, 5, 3])
 with col1:
     st.write("")
 with col2:
@@ -114,7 +114,7 @@ with col2:
     st.markdown('# Large-Cap Stocks')
 with col3:
     # st.write("")
-    st.metric(label="Price", value="70.3256 USD", "-8.23%")
+    st.metric(label="Price", value="70.32", "-8.23%")
 
 # -------------------
 # Add crypto logo and name
