@@ -204,7 +204,6 @@ with col5:
     #st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
 
 
-currentDivYield = num_format(currentDivYield)
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
