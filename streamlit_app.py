@@ -220,37 +220,7 @@ with col5:
 
 
 
-# -------------------
-# Plotly Table
-# -------------------
 
-cols_to_show = ['Market Cap', 'EPS', 'P/E', 'Dividend Yield', 'Beta']
-
-
-datas=[go.Table(columnwidth=[20,15,15,15,15],
-                header=dict(values=[f"<b>{col}</b>" for col in lst],
-                font=dict( size=30),
-                height=30,
-                line_color='white',
-                fill_color='white',
-                align=['center','center', 'center','center','center']),
-                cells=dict(values=cols_to_show,
-               fill_color='white',
-               font=dict(color='grey', size=15),
-               height=30,
-              line_color='white',
-               align=['center','center', 'center','center','center']))]
-
-fig = go.Figure(data=datas)
-fig.update_layout(go.Layout(xaxis = {'showgrid': False},
-                  yaxis = {'showgrid': False}))
-st.plotly_chart(fig, use_container_width=True)
-
-dataframe = pd.DataFrame({
-     'first column': [1, 2, 3, 4],
-     'second column': [10, 20, 30, 40],
- })
-st.experimental_show(dataframe)
 
 # -------------------
 # Candlestick chart with moving averages
