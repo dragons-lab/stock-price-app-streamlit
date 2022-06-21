@@ -273,7 +273,7 @@ st.plotly_chart(fig, use_container_width=True)
 # -------------------
 st.markdown('## Yearly Trends')
 st.markdown(f'''
-- Line graph below shows the price fluctuation of {dic1[select_token]} every day for today's date ({today}).
+- Line graph below shows the price fluctuation of **{dic1[select_token]}** every day for today's date ({today}).
 - The data is automatically updated for the current day.
 - The horizontal line shows the current day's start date price.
 - Green portion indicates the price greater than start date price and red for lower.
