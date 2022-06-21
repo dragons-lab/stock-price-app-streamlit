@@ -115,7 +115,7 @@ with col2:
 with col3:
     # st.write("")
     #st.metric(label="Price", value="70.32", "-8.23%")
-    st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
+    st.metric(label="Price", value="70.2562", delta="-1.20%")
 
 # -------------------
 # Add crypto logo and name
