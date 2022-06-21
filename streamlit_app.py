@@ -158,6 +158,7 @@ currentBeta = num_format(desc['beta'])
 
 currentMarketCap = num_format(currentMarketCap)
 
+businessSummary = desc['longBusinessSummary']'
 # dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
 
@@ -177,16 +178,13 @@ with col3:
 with col4:
     st.metric(label="Price", value = f'{currentPrice}', delta = f'{currentChange} - ({current_PercentChange} %)')
 
-col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
+col1, col2 , col3 = st.columns([9, 3, 3])
 with col1:
-    st.write("")
+    st.write(f'{businessSummary}')
+
 with col2:
-    st.write("")
-with col3:
-    st.write("")
-with col4:
     st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
-with col5:
+with col3:
     st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
