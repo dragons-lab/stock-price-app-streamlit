@@ -180,7 +180,7 @@ with col4:
 
 col1, col2 , col3 = st.columns([9, 3, 3])
 with col1:
-    st.write(f'{businessSummary}')
+    st.write("")
 
 with col2:
     st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
@@ -223,10 +223,9 @@ with col5:
 # -------------------
 # Candlestick chart with moving averages
 # -------------------
-st.markdown('''
-- The following is an interactive Candlestick chart for the price fluctuations over the past 5 years. 
-- Simple moving averages were computed for 20, 50 and 100 day frequencies.
-- Aids in trading strategy and to better interpret the price fluctuations.''')
+st.markdown(f'''
+{businessSummary}
+''')
 
 # download 5 year crypto prices from Yahoo Finance
 df = yf.download(
