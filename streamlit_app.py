@@ -143,7 +143,7 @@ fiftyTwoWeekLow = num_format(desc['fiftyTwoWeekLow'])
 fiftyTwoWeekHigh = num_format(desc['fiftyTwoWeekHigh'])
 PreviousClose = desc['regularMarketPreviousClose']
 currentChange = currentPrice - PreviousClose
-currentChange = num_format(currentChange)
+
 current_PercentChange = num_format((currentChange / PreviousClose) * 100)
 
 
