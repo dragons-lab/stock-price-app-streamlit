@@ -150,11 +150,13 @@ currentPrice = num_format(currentPrice)
 #----------
 dc ={}
 
-currentMarketCap = desc['marketCap']/1000000
+currentMarketCap = desc['marketCap']/1000000000000
 currentEPS = num_format(desc['trailingEps'])
 currentPE = num_format(desc['trailingPE'])
 currentDivYield = num_format(desc['dividendRate'])
 currentBeta = num_format(desc['beta'])
+
+currentMarketCap = num_format(currentMarketCap)
 
 # dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
@@ -191,7 +193,7 @@ with col5:
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
-    st.metric(label="Market Cap", value = f'{currentMarketCap} M' )
+    st.metric(label="Market Cap", value = f'{currentMarketCap} T' )
 with col2:
     st.metric(label="EPS", value = f'{currentEPS}')
 with col3:
