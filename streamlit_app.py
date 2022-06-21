@@ -113,14 +113,18 @@ with col2:
     #st.image('title.png', width=600)
     st.markdown('# Large-Cap Stocks')
 with col3:
-    # st.write("")
+     st.write("")
     #st.metric(label="Price", value="70.32", "-8.23%")
-    st.metric(label="Price", value="70.2562", delta="12.35 -1.20%")
+
 
 # -------------------
 # Add crypto logo and name
 # -------------------
-col1, col2 = st.columns([1, 10])
+tickers = yf.Ticker(f'{select_token}')
+
+desc = tickers.info
+
+col1, col2 , col3 = st.columns([1, 4, 4])
 with col1:
     try:
         st.image(f'{dic2[select_token]}', width=70)
@@ -128,7 +132,8 @@ with col1:
         pass
 with col2:
     st.markdown(f'''## {dic1[select_token]}''')
-
+with col3:
+    st.metric(label="Price", value=f'{desc["currentPrice"]}', delta="12.35 -1.20%")
 
 # -------------------
 # Candlestick chart with moving averages
