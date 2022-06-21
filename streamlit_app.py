@@ -158,7 +158,7 @@ currentBeta = num_format(desc['beta'])
 
 currentMarketCap = num_format(currentMarketCap)
 
-businessSummary = desc['longBusinessSummary']'
+businessSummary = desc['longBusinessSummary']
 # dic[f'{select_token}'] = [currentMarketCap,currentEPS,currentPE,currentDivYield,currentBeta]
 
 
