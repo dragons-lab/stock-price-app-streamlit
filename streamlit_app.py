@@ -131,8 +131,12 @@ tickers = yf.Ticker(f'{select_token}')
 
 desc = tickers.info
 currentPrice = desc["currentPrice"]
-currentOpen = desc['regularMarketOpen']
-PreviousClose = desc['regularMarketPreviousClose']
+currentOpen = num_format(desc['regularMarketOpen'])
+currentLow = num_format(desc['dayLow'])
+currentHigh = num_format(desc['regularMarketDayHigh'])
+fiftyTwoWeekLow = num_format(desc['fiftyTwoWeekLow'])
+fiftyTwoWeekHigh = num_format(desc['fiftyTwoWeekHigh'])
+PreviousClose = desc['previousClose']
 currentChange = currentPrice - PreviousClose
 current_PercentChange = num_format((currentChange  / PreviousClose) * 100)
 
@@ -151,13 +155,13 @@ with col3:
 
 col1, col2 , col3, col4 = st.columns([3, 3, 3, 3])
 with col1:
-    st.metric(label="Previous Close", value = f'{PreviousClose}' )
+    st.metric(label="Previous Close", value = f'{PreviousClose} )
 with col2:
-    st.markdown(f'''## {currentOpen} \n Open ''')
+    st.metric(label="Open", value = f'{currentOpen}')
 with col3:
-    st.metric(label="Previous Close", value = f'{PreviousClose}')
+    st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh}')
 with col4:
-    st.metric(label="Previous Close", value = f'{PreviousClose}')
+    st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh}')
 
 
 
