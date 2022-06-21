@@ -147,6 +147,8 @@ currentChange = currentPrice - PreviousClose
 current_PercentChange = num_format((currentChange / PreviousClose) * 100)
 currentChange = num_format(currentChange)
 currentPrice = num_format(currentPrice)
+currency = desc['currency']
+
 #----------
 dc ={}
 
@@ -176,7 +178,7 @@ with col2:
 with col3:
     st.write("")
 with col4:
-    st.metric(label="Price", value = f'{currentPrice}', delta = f'{currentChange} - ({current_PercentChange} %)')
+    st.metric(label="Price", value = f'{currentPrice} {currency}', delta = f'{currentChange} - ({current_PercentChange} %)')
 
 col1, col2 , col3 = st.columns([9, 3, 3])
 with col1:
