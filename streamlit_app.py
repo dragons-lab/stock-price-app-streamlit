@@ -187,8 +187,10 @@ with col3:
     st.metric(label="Volume", value = f'{currentVolume} M')
 with col4:
     st.metric(label="Day's Range", value = f'{currentLow} - {currentHigh}')
+    st.slider('', float(currentLow), float(currentHigh), float(currentPrice))
 with col5:
     st.metric(label="52 Week Range", value = f'{fiftyTwoWeekLow} - {fiftyTwoWeekHigh}')
+    st.slider('', float(fiftyTwoWeekLow), float(fiftyTwoWeekHigh), float(currentPrice))
 
 col1, col2 , col3, col4, col5 = st.columns([3, 3, 3, 3, 3])
 with col1:
