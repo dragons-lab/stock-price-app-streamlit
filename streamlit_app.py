@@ -223,6 +223,7 @@ with col5:
 # -------------------
 # Candlestick chart with moving averages
 # -------------------
+st.markdown('## Business Summary')
 st.markdown(f'''
 {businessSummary}
 ''')
