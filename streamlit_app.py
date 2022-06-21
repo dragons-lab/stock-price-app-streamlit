@@ -110,8 +110,8 @@ col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
 with col2:
-    #st.image('title.png', width=600)
-    st.markdown('## Large-Cap Stocks')
+    st.image('title.png', width=600)
+    #st.markdown('## Large-Cap Stocks')
 with col3:
     st.write("")
 
