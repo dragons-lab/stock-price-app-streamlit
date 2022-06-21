@@ -151,13 +151,13 @@ with col3:
 
 col1, col2 , col3, col4 = st.columns([3, 3, 3, 3])
 with col1:
-    st.metric(label="Previous Close", delta = PreviousClose )
+    st.metric(label="Previous Close", delta = f'{PreviousClose}' )
 with col2:
     st.markdown(f'''## {currentOpen} \n Open ''')
 with col3:
-    st.metric(label="Previous Close", delta=PreviousClose)
+    st.metric(label="Previous Close", delta = f'{PreviousClose}')
 with col4:
-    st.metric(label="Previous Close", delta=PreviousClose)
+    st.metric(label="Previous Close", delta = f'{PreviousClose}')
 
 
 
