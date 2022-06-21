@@ -142,7 +142,7 @@ with col1:
 with col2:
     st.markdown(f'''## {dic1[select_token]}''')
 with col3:
-    st.metric(label="Price", value=f'{desc["currentPrice"]}', delta= f'{currentChange} {current_PercentChange} %')
+    st.metric(label="Price", delta=f'{desc["currentPrice"]}', delta= f'{currentChange} {current_PercentChange} %')
 
 # -------------------
 # Candlestick chart with moving averages
